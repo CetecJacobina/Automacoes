@@ -1,0 +1,290 @@
+Queria fazer exportar os dados de uma pagina em uma planilha xlsx.
+a pasta deve ter o nome da lição que tem um numero seguido de um ponto:
+<td>
+                                                    <strong>
+                  1. Qualidade de Vida
+                  </strong>
+                              </td>
+
+primeira coluna "Aluno"
+<h3 class="block page-title">
+    Miriam Sousa Da Silva
+  
+a segunda coluna deve ser  "tempo 1"
+vai pegar o valor em minutos do ultimo td da linha que não começa com o td "Teste seus conhecimentos!"
+a terceira coluna deve ser "Quiz 1"
+a quarta coluna deve ser "Parc 1" uma formula "=(((B4/100)*40+(C4/15)*10)/50*(25/$P$2))"
+
+essas colunas se repetem para tempo, quiz e parc 2, 3 e 4. e a ultima será "Média" que será a soma das 4 "parc"
+
+<div id="dataTable_wrapper" class="dataTables_wrapper no-footer"><div class="row"><div class="col-md-6 col-sm-6"><div class="dataTables_length" id="dataTable_length"><label>Mostrar: <select name="dataTable_length" aria-controls="dataTable" class="form-control input-sm input-xsmall input-inline"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="-1">Todos</option></select></label></div></div><div class="col-md-6 col-sm-6"><div id="dataTable_filter" class="dataTables_filter"><label>Filtrar:<input type="search" class="form-control input-sm input-small input-inline" placeholder="" aria-controls="dataTable"></label></div></div></div><div class="table-scrollable"><table id="dataTable" class="table table-condensed table-striped table-hover table-bordered dataTable no-footer" data-sort="[[0, 'asc']]" role="grid" aria-describedby="dataTable_info"><thead>
+            <tr role="row"><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="
+                Etapa
+              : activate to sort column ascending" style="width: 699px;">
+                Etapa
+              </th><th style="width: 77px; text-align: center;" class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="
+                Situação
+              : activate to sort column ascending">
+                Situação
+              </th><th style="width: 77px; text-align: center;" class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="
+                Notas
+              : activate to sort column ascending">
+                Notas
+              </th><th style="width: 78px; text-align: center;" class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="
+                Tempo (h)
+              : activate to sort column ascending">
+                Tempo (h)
+              </th></tr>
+          </thead>
+          
+          <tbody>
+                                    
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+          <tr role="row" class="odd">
+              <td>
+                                                    <strong>
+                  1. Qualidade de Vida
+                  </strong>
+                              </td>
+              <td style="text-align: center">
+                              </td>
+              <td style="text-align: center">
+                              </td>
+              <td style="text-align: center;">
+                              </td>
+            </tr><tr role="row" class="even">
+              <td>
+                                  Introdução
+                              </td>
+              <td style="text-align: center">
+                                  <span class="badge bg-green-soft badge-roundless">Concluído</span>
+                              </td>
+              <td style="text-align: center">
+                              </td>
+              <td style="text-align: center;">
+                                  
+                  00:19:00
+                              </td>
+            </tr><tr role="row" class="odd">
+              <td>
+                                  Teste seus conhecimentos!
+                              </td>
+              <td style="text-align: center">
+                                  <span class="badge bg-green-soft badge-roundless">Concluído</span>
+                              </td>
+              <td style="text-align: center">
+                                  90,00%<br><span class="text-muted"> Acertos: 9 | Erros: 1</span>                              </td>
+              <td style="text-align: center;">
+                                  
+                  00:06:00
+                              </td>
+            </tr><tr role="row" class="even">
+              <td>
+                                  Benefícios e Orientações
+                              </td>
+              <td style="text-align: center">
+                                  <span class="badge bg-green-soft badge-roundless">Concluído</span>
+                              </td>
+              <td style="text-align: center">
+                              </td>
+              <td style="text-align: center;">
+                                  
+                  00:51:00
+                              </td>
+            </tr><tr role="row" class="odd">
+              <td>
+                                  Teste seus conhecimentos!
+                              </td>
+              <td style="text-align: center">
+                                  <span class="badge bg-green-soft badge-roundless">Concluído</span>
+                              </td>
+              <td style="text-align: center">
+                                  80,00%<br><span class="text-muted"> Acertos: 8 | Erros: 2</span>                              </td>
+              <td style="text-align: center;">
+                                  
+                  00:09:00
+                              </td>
+            </tr><tr role="row" class="even">
+              <td>
+                                  O que é Stress?
+                              </td>
+              <td style="text-align: center">
+                                  <span class="badge bg-green-soft badge-roundless">Concluído</span>
+                              </td>
+              <td style="text-align: center">
+                              </td>
+              <td style="text-align: center;">
+                                  
+                  00:21:00
+                              </td>
+            </tr><tr role="row" class="odd">
+              <td>
+                                  Teste seus conhecimentos!
+                              </td>
+              <td style="text-align: center">
+                                  <span class="badge bg-green-soft badge-roundless">Concluído</span>
+                              </td>
+              <td style="text-align: center">
+                                  90,00%<br><span class="text-muted"> Acertos: 9 | Erros: 1</span>                              </td>
+              <td style="text-align: center;">
+                                  
+                  00:06:00
+                              </td>
+            </tr><tr role="row" class="even">
+              <td>
+                                  Ginástica Laboral e Ambientes
+                              </td>
+              <td style="text-align: center">
+                                  <span class="badge bg-green-soft badge-roundless">Concluído</span>
+                              </td>
+              <td style="text-align: center">
+                              </td>
+              <td style="text-align: center;">
+                                  
+                  00:13:00
+                              </td>
+            </tr><tr role="row" class="odd">
+              <td>
+                                  Teste seu Conhecimento!
+                              </td>
+              <td style="text-align: center">
+                                  <span class="badge bg-green-soft badge-roundless">Concluído</span>
+                              </td>
+              <td style="text-align: center">
+                                  90,00%<br><span class="text-muted"> Acertos: 9 | Erros: 1</span>                              </td>
+              <td style="text-align: center;">
+                                  
+                  00:05:00
+                              </td>
+            </tr><tr role="row" class="even">
+              <td>
+                                                    <strong>
+                  2. Desenho Técnico
+                  </strong>
+                              </td>
+              <td style="text-align: center">
+                              </td>
+              <td style="text-align: center">
+                              </td>
+              <td style="text-align: center;">
+                              </td>
+            </tr><tr role="row" class="odd">
+              <td>
+                                  O que é Desenho Técnico?
+                              </td>
+              <td style="text-align: center">
+                                  <span class="badge bg-red-mint badge-roundless">Pendente<span>
+                              </span></span></td>
+              <td style="text-align: center">
+                              </td>
+              <td style="text-align: center;">
+                              </td>
+            </tr><tr role="row" class="even">
+              <td>
+                                  Teste seus conhecimentos!
+                              </td>
+              <td style="text-align: center">
+                                  <span class="badge bg-red-mint badge-roundless">Pendente<span>
+                              </span></span></td>
+              <td style="text-align: center">
+                                  0,00%<br><span class="text-muted"> Acertos:  | Erros: </span>                              </td>
+              <td style="text-align: center;">
+                              </td>
+            </tr><tr role="row" class="odd">
+              <td>
+                                  Elementos do desenho
+                              </td>
+              <td style="text-align: center">
+                                  <span class="badge bg-red-mint badge-roundless">Pendente<span>
+                              </span></span></td>
+              <td style="text-align: center">
+                              </td>
+              <td style="text-align: center;">
+                              </td>
+            </tr><tr role="row" class="even">
+              <td>
+                                  Teste seu Conhecimento!
+                              </td>
+              <td style="text-align: center">
+                                  <span class="badge bg-red-mint badge-roundless">Pendente<span>
+                              </span></span></td>
+              <td style="text-align: center">
+                                  0,00%<br><span class="text-muted"> Acertos:  | Erros: </span>                              </td>
+              <td style="text-align: center;">
+                              </td>
+            </tr><tr role="row" class="odd">
+              <td>
+                                  Tipos de Projeções
+                              </td>
+              <td style="text-align: center">
+                                  <span class="badge bg-red-mint badge-roundless">Pendente<span>
+                              </span></span></td>
+              <td style="text-align: center">
+                              </td>
+              <td style="text-align: center;">
+                              </td>
+            </tr><tr role="row" class="even">
+              <td>
+                                  Teste seu Conhecimento!
+                              </td>
+              <td style="text-align: center">
+                                  <span class="badge bg-red-mint badge-roundless">Pendente<span>
+                              </span></span></td>
+              <td style="text-align: center">
+                                  0,00%<br><span class="text-muted"> Acertos:  | Erros: </span>                              </td>
+              <td style="text-align: center;">
+                              </td>
+            </tr><tr role="row" class="odd">
+              <td>
+                                  Desenho Técnico e Segurança
+                              </td>
+              <td style="text-align: center">
+                                  <span class="badge bg-red-mint badge-roundless">Pendente<span>
+                              </span></span></td>
+              <td style="text-align: center">
+                              </td>
+              <td style="text-align: center;">
+                              </td>
+            </tr><tr role="row" class="even">
+              <td>
+                                  Teste seus conhecimentos!
+                              </td>
+              <td style="text-align: center">
+                                  <span class="badge bg-red-mint badge-roundless">Pendente<span>
+                              </span></span></td>
+              <td style="text-align: center">
+                                  0,00%<br><span class="text-muted"> Acertos:  | Erros: </span>                              </td>
+              <td style="text-align: center;">
+                              </td>
+            </tr><tr style="font-weight: bold" role="row" class="odd">
+              <td style="text-align: left">
+                Total
+              </td>
+              <td style="text-align: left">
+                &nbsp;
+              </td>
+              <td style="text-align: center;">
+                                87,50%
+              </td>
+              <td style="text-align: center;">
+                02:10:00
+              </td>
+            </tr></tbody>
+        </table></div><div class="row"><div class="col-md-5 col-sm-5"><div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">Total: 19 registros</div></div><div class="col-md-7 col-sm-7"><div class="dataTables_paginate paging_bootstrap_number" id="dataTable_paginate"><ul class="pagination" style="visibility: visible;"><li class="prev disabled"><a href="#" title="Prev"><i class="fa fa-angle-left"></i></a></li><li class="active"><a href="#">1</a></li><li class="next disabled"><a href="#" title="Next"><i class="fa fa-angle-right"></i></a></li></ul></div></div></div></div>

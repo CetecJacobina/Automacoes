@@ -1,0 +1,137 @@
+// Função para esperar elementos no DOM com timeout
+async function esperarElemento(seletor, timeout = 15000) {
+    return new Promise((resolve, reject) => {
+        const intervalo = 500; // Verificar a cada 500ms
+        let tempoDecorrido = 0;
+
+        const verificar = setInterval(() => {
+            const elemento = document.querySelector(seletor);
+            if (elemento) {
+                clearInterval(verificar);
+                resolve(elemento); // Retorna o elemento encontrado
+            } else if (tempoDecorrido >= timeout) {
+                clearInterval(verificar);
+                reject(new Error(`Elemento ${seletor} não encontrado dentro do tempo limite.`));
+            }
+            tempoDecorrido += intervalo;
+        }, intervalo);
+    });
+}
+
+// Função para buscar contratos de alunos
+async function buscarContratos(alunos, baseUrlBusca) {
+    const resultados = [];
+
+    for (const aluno of alunos) {
+        const buscaUrl = `${baseUrlBusca}${encodeURIComponent(aluno)}`;
+        console.log(`🌐 Buscando aluno: ${aluno} em ${buscaUrl}`);
+
+        try {
+            const response = await fetch(buscaUrl, {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Accept': 'text/html',
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+                }
+            });
+
+            if (response.ok) {
+                const html = await response.text();
+                const doc = new DOMParser().parseFromString(html, "text/html");
+
+                // Localizar links de contratos
+                const botoesContratos = doc.querySelectorAll("a[href^='/contratos/']");
+                for (const botaoContrato of botoesContratos) {
+                    const contratoUrl = new URL(botaoContrato.href, "https://app.cgd.com.br").href;
+                    console.log(`🎯 Contrato encontrado: ${contratoUrl}`);
+                    resultados.push({ aluno, contratoUrl });
+                }
+            } else {
+                console.error(`❌ Erro ao buscar contratos de ${aluno}: ${response.statusText}`);
+            }
+        } catch (error) {
+            console.error(`⚠️ Erro ao processar busca para ${aluno}: ${error.message}`);
+        }
+    }
+
+    return resultados;
+}
+
+// Função para processar contratos e identificar cursos
+async function processarContratos(contratos, cursoDesejado) {
+    const resultados = [];
+
+    for (const { aluno, contratoUrl } of contratos) {
+        try {
+            const response = await fetch(contratoUrl, {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Accept': 'text/html',
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+                }
+            });
+
+            if (response.ok) {
+                const html = await response.text();
+                const doc = new DOMParser().parseFromString(html, "text/html");
+
+                // Verificar a tabela de cursos
+                const linhasTabela = doc.querySelectorAll("#cursos_andamento > div.table-scrollable > table > tbody > tr");
+                for (const linha of linhasTabela) {
+                    const cursoNaLinha = linha.querySelector("td:nth-child(1)")?.textContent.trim();
+                    if (cursoNaLinha === cursoDesejado) {
+                        const linkDesempenho = linha.querySelector("td:nth-child(6) > div > a[href*='/desempenho']")?.href;
+                        const match = linkDesempenho.match(/\/(\d+)\/desempenho/); // Extrair ID
+                        const id = match ? match[1] : "ID não encontrado";
+
+                        resultados.push({
+                            aluno,
+                            curso: cursoDesejado,
+                            id,
+                            linkDesempenho,
+                        });
+                    }
+                }
+            } else {
+                console.error(`❌ Erro ao acessar contrato de ${aluno}: ${response.statusText}`);
+            }
+        } catch (error) {
+            console.error(`⚠️ Erro ao processar contrato para ${aluno}: ${error.message}`);
+        }
+    }
+
+    return resultados;
+}
+
+// Função para exibir resultados no console
+function exibirResultados(resultados) {
+    console.log("🔍 Resultados finais:");
+    resultados.forEach(({ aluno, curso, id, linkDesempenho }) => {
+        console.log(`📌 Aluno: ${aluno}`);
+        console.log(`   Curso: ${curso}`);
+        console.log(`   ID: ${id}`);
+        console.log(`   Link de Desempenho: ${linkDesempenho}`);
+    });
+}
+
+// Fluxo principal
+(async function () {
+    const alunos = ["Agnaldo da Silva Pereira Filho", "Cristen Menezes Miranda"]; // Lista de alunos
+    const baseUrlBusca = "https://app.cgd.com.br/cursos-ead/alunos?q="; // URL base de busca
+    const cursoDesejado = "Técnico em Eletromecânica EAD 5"; // Nome do curso desejado
+
+    console.log("🌐 Iniciando busca de contratos...");
+    const contratos = await buscarContratos(alunos, baseUrlBusca);
+
+    console.log("🔍 Processando contratos e buscando cursos...");
+    const resultados = await processarContratos(contratos, cursoDesejado);
+
+    console.log("📊 Exibindo resultados finais:");
+    if (resultados.length > 0) {
+        exibirResultados(resultados);
+    } else {
+        console.warn("⚠️ Nenhum curso correspondente encontrado nos contratos.");
+    }
+})();

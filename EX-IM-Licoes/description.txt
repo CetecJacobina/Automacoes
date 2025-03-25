@@ -1,0 +1,18 @@
+/js
+  ├── main.js              // Arquivo principal que gerencia a inicialização
+  ├── quiz/
+  │   ├── quizExport.js    // Função para exportar quizzes
+  │   ├── quizImport.js    // Função para importar quizzes
+  │   ├── quizUtils.js     // Funções auxiliares para manipulação de quizzes
+  │   ├── quizHandler.js   // Função para salvar quizzes
+  ├── lessons/
+  │   ├── lessonExport.js  // Função para exportar lições e conteúdos
+  │   ├── lessonImport.js  // Função para importar lições e conteúdos
+  │   ├── lessonUtils.js   // Funções auxiliares para lições
+  ├── ui/
+  │   ├── progressBar.js   // Gerenciamento da barra de progresso flutuante
+  │   ├── buttons.js       // Criação de botões e interações na UI
+main.js será o ponto de entrada, importando as funções necessárias.
+A pasta quiz/ conterá arquivos relacionados à manipulação de quizzes.
+A pasta lessons/ lidará com lições e conteúdos.
+A pasta ui/ será responsável pelos elementos visuais.

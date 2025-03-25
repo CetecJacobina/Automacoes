@@ -1,0 +1,75 @@
+(async function () {
+    const alunos = ["Cristen Menezes Miranda"]; // Lista de alunos
+    const baseUrlBusca = "https://app.cgd.com.br/cursos-ead/alunos?q="; // URL base para busca de alunos
+    const resultados = []; // Lista de resultados finais
+
+    for (const aluno of alunos) {
+        const buscaUrl = `${baseUrlBusca}${encodeURIComponent(aluno)}`;
+        console.log(`🌐 Buscando aluno: ${aluno} em ${buscaUrl}`);
+
+        try {
+            const response = await fetch(buscaUrl);
+            if (response.ok) {
+                const html = await response.text();
+                const doc = new DOMParser().parseFromString(html, "text/html");
+
+                // Localizar botões de contratos
+                const botoesContratos = doc.querySelectorAll("a[href^='/contratos/']");
+                for (const botaoContrato of botoesContratos) {
+                    // Capturar a URL do botão contrato
+                    const contratoUrl = new URL(botaoContrato.href, "https://app.cgd.com.br").href;
+                    console.log(`🎯 URL do botão contrato capturada: ${contratoUrl}`);
+
+                    // Fazer a requisição para a página do contrato
+                    const contratoResponse = await fetch(contratoUrl);
+                    if (contratoResponse.ok) {
+                        const contratoHtml = await contratoResponse.text();
+                        const contratoDoc = new DOMParser().parseFromString(contratoHtml, "text/html");
+
+                        // Localizar a tabela e o botão na linha do curso
+                        const linhaCurso = contratoDoc.querySelector(
+                            "#cursos_andamento > div.table-scrollable > table > tbody > tr:nth-child(1)"
+                        );
+
+                        if (linhaCurso) {
+                            console.log("✅ Linha do curso encontrada.");
+
+                            // Capturar o botão de desempenho e o ID no link
+                            const botaoDesempenho = linhaCurso.querySelector(
+                                "td:nth-child(6) > div > a:nth-child(2)"
+                            );
+
+                            if (botaoDesempenho) {
+                                const linkDesempenho = new URL(botaoDesempenho.href, "https://app.cgd.com.br").href;
+                                const match = linkDesempenho.match(/\/(\d+)\/desempenho/); // Extrair ID do link
+                                const id = match ? match[1] : "ID não encontrado";
+                                console.log(`📌 ID extraído: ${id}`);
+                                console.log(`🎯 Link completo do botão: ${linkDesempenho}`);
+
+                                // Adicionar ao resultado
+                                resultados.push({ aluno, contratoUrl, linkDesempenho, id });
+                            } else {
+                                console.warn("⚠️ Botão com link de desempenho não encontrado na linha especificada.");
+                            }
+                        } else {
+                            console.warn("⚠️ Linha do curso não encontrada na tabela.");
+                        }
+                    } else {
+                        console.error(`❌ Erro ao acessar URL do contrato: ${contratoResponse.statusText}`);
+                    }
+                }
+            } else {
+                console.error(`❌ Erro ao buscar aluno ${aluno}: ${response.statusText}`);
+            }
+        } catch (error) {
+            console.error(`⚠️ Erro ao processar busca para aluno ${aluno}:`, error);
+        }
+    }
+
+    console.log("🔍 Resultados finais:", resultados);
+
+    // Exibir os resultados no console
+    resultados.forEach(({ aluno, contratoUrl, linkDesempenho, id }) => {
+        console.log(`📌 Aluno: ${aluno} | URL Contrato: ${contratoUrl} | URL Desempenho: ${linkDesempenho} | ID: ${id}`);
+    });
+})();
