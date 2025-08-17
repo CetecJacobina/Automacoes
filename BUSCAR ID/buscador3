@@ -119,31 +119,8 @@ function exibirResultados(resultados) {
 // Fluxo principal
 (async function () {
     const alunos = [
-  "Airlei Gabriela de Oliveira Lopes",
-  "Aline Moura Carvalho Angelim",
-  "Amanda Vieira Santos de Jesus",
-  "Andreza Costa Santos",
-  "Ane Vitória Alves da Silva",
-  "Camila Santos Amanço",
-  "Daiane Hila Maia dos Santos",
-  "Eliene Araujo dos Santos",
-  "Gabriela Santos Alves",
-  "Janaina dos Santos",
-  "Jessica Santos Sousa",
-  "Júlio da Cruz Lima",
-  "Karolaine Gomes Ferreira",
-  "Karolaine Luiz da Cruz",
-  "Lauane Vieira Santos Nascimento",
-  "Manoela Larissa Reis de Souza",
-  "Maria José Gonçalves da Silva",
-  "Marinez Ferreira Santos",
-  "Miriam Sousa Da Silva",
-  "Myrella Barbosa Santana",
-  "Raíra Mateus Mascarenhas Barreto",
-  "Renan Lima Silva",
-  "Soraia Pinto Alves",
-  "Verônica Silva de Almeida"
-];["Agnaldo da Silva Pereira Filho", "Cristen Menezes Miranda"]; // Lista de alunos
+"objeto-alunos"
+];["Objeto alunos"]; // Lista de alunos
     const baseUrlBusca = "https://app.cgd.com.br/cursos-ead/alunos?q="; // URL base de busca
     const cursoDesejado = "Técnico em Segurança do Trabalho 29"; // Nome do curso desejado
 
