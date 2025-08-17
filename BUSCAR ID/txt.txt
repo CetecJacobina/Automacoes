@@ -1,0 +1,28 @@
+quero alterar o fluxo.
+ler o nome do curso, e os alunos.
+alterar a url para https://app.cgd.com.br/alunos?q=nome+sobrenome:
+ler a lista de nomes (body > div > div.page-container > div.page-content-wrapper > div > div.portlet.light > div.portlet-body.form > table > tbody > tr:nth-child(1) > td:nth-child(1)):
+
+pra essa busca, pegar todos os links dentro de( body > div > div.page-container > div.page-content-wrapper > div > div.portlet.light > div.portlet-body.form > table > tbody > tr:nth-child(1) > td:nth-child(2) > span.hidden-xs.hidden-sm > a), alterar https://app.cgd.com.br/contratos/408484 para https://app.cgd.com.br/contratos/cursos-ead/408484
+
+esperar (fetch("https://app.cgd.com.br/contratos/cursos-ead/408484/andamento", {
+  "headers": {
+    "accept": "text/html, */*; q=0.01",
+    "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+    "priority": "u=1, i",
+    "sec-ch-ua": "\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "x-requested-with": "XMLHttpRequest"
+  },
+  "referrer": "https://app.cgd.com.br/contratos/cursos-ead/408484",
+  "referrerPolicy": "strict-origin-when-cross-origin",
+  "body": null,
+  "method": "GET",
+  "mode": "cors",
+  "credentials": "include"
+});)
+verificar se o seletor(#cursos_andamento > div.table-scrollable > table > tbody > tr > td:nth-child(1)) tem o nome do curso. se sim pegar o link que tem em (#cursos_andamento > div.table-scrollable > table > tbody > tr > td:nth-child(6) > div > a.btn.btn-outline.blue.btn-xs) e extrair o id(https://app.cgd.com.br/contratos/cursos-ead/"432742"/desempenho).
