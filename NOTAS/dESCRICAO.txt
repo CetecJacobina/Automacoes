@@ -1,4 +1,4 @@
-Queria fazer exportar os dados de uma pagina em uma planilha xlsx.
+Fazer exportar os dados de uma pagina em uma planilha xlsx.
 a pasta deve ter o nome da lição que tem um numero seguido de um ponto:
 <td>
                                                     <strong>
