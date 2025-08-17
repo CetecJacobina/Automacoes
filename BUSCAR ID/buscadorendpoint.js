@@ -42,7 +42,7 @@ async function esperarAndamento(url, maxTentativas = 10, intervalo = 2000) {
 }
 
 (async function () {
-    const alunos = ["Agnaldo da Silva Pereira Filho", "Cristen Menezes Miranda"]; // Lista de alunos
+    const alunos = ["alunos", "Alunos"]; // Lista de alunos
     const cursoDesejado = "Técnico em Eletromecânica EAD 5"; // Nome do curso
     const resultados = []; // Lista para armazenar resultados
 
